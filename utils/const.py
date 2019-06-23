@@ -4,7 +4,7 @@ from enum import Enum
 # File system routes
 IMAGES_ROUTE = 'data/pictures/'
 MODELS_ROUTE = 'data/models/'
-DATASET_ROUTE = 'data/movies_metadata.csv'
+DATASET_ROUTE = 'data/movies_metadata_big.csv'
 MODEL_VOTES_ROUTE = 'data/models/model_votes.h5'
 
 # Dataset constants

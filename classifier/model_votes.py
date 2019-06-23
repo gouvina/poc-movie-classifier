@@ -1,24 +1,24 @@
 ''' Regression model representation '''
+import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, utils
 from tensorflow.keras.callbacks import Callback
 from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
 import processing.reader as reader
 
 class TrainCallback(Callback):
     ''' Callback class for showing train progress '''
-    def on_epoch_end(self, epoch, logs):
-        ''' A '''
-        if epoch % 100 == 0:
+    def on_epoch_end(self, epoch, _):
+        ''' Print info after iteration '''
+        if epoch % 10 == 0:
             print(f'Iteration n° {epoch} reached')
 
 class ModelVotes():
     '''
     Representation for rating model
-    -> Neural network with functions for training and predicting 
+    -> Neural network with functions for training and predicting
     -> Vectorizer for text interpretation
     -> File manipulation for saving/loading models
     '''
@@ -33,7 +33,7 @@ class ModelVotes():
         self.history = None
 
         self.vectorizer = None
-        self.epochs = 1000
+        self.epochs = 100
 
         self.vectorize_dataset()
 
@@ -79,7 +79,11 @@ class ModelVotes():
 
     def predict(self, examples):
         ''' Predict a set of examples with trained model '''
-        return self.model.predict(examples)
+        prediction = self.model.predict(examples)
+        result = np.zeros(prediction.size)
+        for i in range(0, prediction.size):
+            result[i] = int(round(prediction[i][0]))
+        return result
 
     # DATA MANIPULATION FUNCTIONS
 
@@ -91,7 +95,7 @@ class ModelVotes():
     def vectorize_examples(self, examples):
         ''' Generate sparse matrix from vectorized examples '''
         return self.vectorizer.transform(examples).toarray()
-        
+
     # FILE MANIPULATION FUNCTIONS
 
     def save_model(self, filename):

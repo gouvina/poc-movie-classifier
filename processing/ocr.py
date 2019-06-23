@@ -19,7 +19,6 @@ def get_threshold_image_text(filename, resize_type):
     elif resize_type == ResizeTypes.REDUCE:
         img = optimizer.reduce_image(img)
     images = optimizer.get_image_thresholds(img)
-    save_images(images, filename)
     return [parser.clean_text(tesseract.image_to_string(img)) for img in images]
 
 def get_enlarged_image_text(filename):
@@ -47,6 +46,5 @@ def save_images(images, filename):
     extension = filename.split('.')[1]
     index = 0
     for img in images:
-        print(f'{name}-{str(index)}.{extension}')
         cv.imwrite(f'{name}-{str(index)}.{extension}', img)
         index += 1

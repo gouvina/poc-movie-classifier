@@ -1,9 +1,11 @@
 ''' API main and routes'''
 from flask import Flask, jsonify, request
 import controllers.image_controller as image_controller
+import controllers.model_controller as model_controller
 import utils.params as params
 
 APP = Flask(__name__)
+#model_votes = model_controller.load_models()
 
 @APP.route('/images', methods=['GET'], endpoint='get_images')
 def get_images():

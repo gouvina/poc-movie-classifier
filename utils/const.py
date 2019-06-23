@@ -2,7 +2,14 @@
 from enum import Enum
 
 # File system routes
-IMAGE_FOLDER = 'data/pictures/'
+IMAGES_ROUTE = 'data/pictures/'
+MODELS_ROUTE = 'data/models/'
+DATASET_ROUTE = 'data/movies_metadata.csv'
+MODEL_VOTES_ROUTE = 'data/models/model_votes.h5'
+
+# Dataset constants
+DATASET_GENRES_COLUMNS = ['title', 'genres']
+DATASET_VOTES_COLUMNS = ['title', 'vote_average']
 
 # Parameter types
 class ResizeTypes(Enum):

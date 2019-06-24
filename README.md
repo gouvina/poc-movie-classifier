@@ -4,9 +4,7 @@ Basic REST API for classifying movies based on poster picture
 ### API Usage
 This API allows you to send and image of a movie poster and get its title and possible rating using a neural network.
 
-For mounting the API, run <br>
-` python api.py ` <br>
-It will mount it on port 5000 and make it available to new requests.
+For mounting the API, run ` python api.py `. It will mount it on port 5000 and make it available to new requests.
 
 It has 2 methods for processing poster images:
 - **POST /images**
@@ -29,9 +27,7 @@ body: {
 
 ### Model Usage
 
-For training the model, run <br>
-` python train.py ` <br>
-It will train and save the model in a file (*data/models/model_votes.h5*) that can be loaded afterwards for predicting movie ratings by the API.
+For training the model, run ` python train.py `. It will train and save the model in a file (*data/models/model_votes.h5*) that can be loaded afterwards for predicting movie ratings by the API.
 
 **Comments:** Model file is already provided and trained using _data/movies_dataset_big.csv_. Take into account that if _train.py_ is executed and finished, it will overwrite that file.
 
